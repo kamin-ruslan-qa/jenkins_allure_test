@@ -1,0 +1,123 @@
+package utils;
+
+import net.datafaker.Faker;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.zip.ZipInputStream;
+
+import static java.lang.String.format;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+
+public class RandomUtils {
+
+    private final Faker faker = new Faker();
+
+    public static void main(String[] args) {
+        System.out.println(getRandomString(8));
+        System.out.println(getRandomEmail());
+        System.out.println(getRandomNumber_bad_practice(11));
+        System.out.println(getRandomInt(0, 999999));
+        System.out.println(getRandomInt(111111111, 888888888));
+        System.out.println(getRandomPhone());
+        System.out.println(getRandomGender());
+
+    }
+
+    public static String getRandomString(int length) {
+//        String LETTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        StringBuilder result = new StringBuilder();
+        SecureRandom rnd = new SecureRandom();
+
+        for (int i = 0; i < length; i++)
+            result.append(LETTERS.charAt(rnd.nextInt(LETTERS.length())));
+
+        return result.toString();
+    }
+
+    public static String getRandomEmail() {
+//        return getRandomString(8) + "@" + getRandomString(8) + ".com";
+//        return String.format("%s@%s.com");
+        return format("%s@%s.com", getRandomString(8), getRandomString(8));
+    }
+
+    public static String getRandomNumber_bad_practice(int length) { // BAD PRACTICE
+        String LETTERS = "0123456789";
+        StringBuilder result = new StringBuilder();
+        SecureRandom rnd = new SecureRandom();
+
+        for (int i = 0; i < length; i++)
+            result.append(LETTERS.charAt(rnd.nextInt(LETTERS.length())));
+
+        return result.toString();
+    }
+
+    public static int getRandomInt(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+//        SecureRandom rnd = new SecureRandom();
+//        return rnd.nextInt(max + 1);
+    }
+
+    // +3 (263) 253 - 66 - 12
+    public static String getRandomPhone() {
+        String phoneTemplate = "+%s (%s) %s - %s - %s";
+
+        return format(phoneTemplate, getRandomInt(1, 9), getRandomInt(111, 999), getRandomInt(111, 999)
+                , getRandomInt(11, 99), getRandomInt(11, 99));
+    }
+
+    public static String getRandomGender_bad_practice() {
+        String[] genders = {"Male", "Female", "Other"};
+
+        int randomIndex = getRandomInt(0, 2);
+
+        return genders[randomIndex];
+    }
+
+    public static String getRandomGender() {
+        String[] genders = {"Male", "Female", "Other"};
+
+        return getRandomItemFromStringArray(genders);
+    }
+
+    public static String getRandomItemFromStringArray(String[] stringArray) {
+        int arrayLength = stringArray.length;
+        int randomIndex = getRandomInt(0, arrayLength - 1);
+
+        return stringArray[randomIndex];
+    }
+
+    public String getRandomCity(String State) {
+        return switch (State) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> "Delhi";
+        };
+    }
+
+    public static int getMonthNumber(String monthName) {
+        return switch (monthName) {
+            case "January" -> 1;
+            case "February" -> 2;
+            case "March" -> 3;
+            case "April" -> 4;
+            case "May" -> 5;
+            case "June" -> 6;
+            case "July" -> 7;
+            case "August" -> 8;
+            case "September" -> 9;
+            case "October" -> 10;
+            case "November" -> 11;
+            case "December" -> 12;
+            default -> 1;
+        };
+    }
+}

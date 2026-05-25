@@ -1,0 +1,27 @@
+{
+  "warehouseCode": "WH-8899",
+  "manager": "Алексей Смирнов",
+  "stockItems": [
+    {
+      "articleId": 1001,
+      "productLabel": "Ноутбук Lenovo ThinkPad",
+      "unitPrice": 78500.50,
+      "quantityAvailable": 12,
+      "active": true
+    },
+    {
+      "articleId": 1002,
+      "productLabel": "Мышь Logitech MX Master",
+      "unitPrice": 8900.00,
+      "quantityAvailable": 45,
+      "active": true
+    },
+    {
+      "articleId": 1003,
+      "productLabel": "Клавиатура механическая",
+      "unitPrice": 12500.00,
+      "quantityAvailable": 0,
+      "active": false
+    }
+  ]
+}
