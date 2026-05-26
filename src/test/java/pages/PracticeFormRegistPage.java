@@ -78,49 +78,49 @@ public class PracticeFormRegistPage {
 
         return this;
     }
-
+    @Step("Ввести предмет \"{value}\"")
     public PracticeFormRegistPage typeSubjects(String value) {
         subjectsInput.setValue(value).pressEnter();
 
         return this;
     }
-
+    @Step("Выбрать хобби \"{value}\"")
     public PracticeFormRegistPage setHobbies(String value) {
         hobbiesWrapper.$(byText(value)).click();
 
         return this;
     }
-
+    @Step("Загрузка картинки \"{value}\"")
     public PracticeFormRegistPage uploadPicture(String value) {
         uploadPictureInput.uploadFromClasspath(value);
 
         return this;
     }
-
+    @Step("Ввести адрес \"{value}\"")
     public PracticeFormRegistPage typecurrentAddress(String value) {
         currentAddress.setValue(value);
 
         return this;
     }
-
+    @Step("Выбрать штат \"{value}\"")
     public PracticeFormRegistPage setState(String value) {
         stateSelect.click();
         stateCityContainer.$(byText(value)).click();
         return this;
     }
-
+    @Step("Выбрать город \"{value}\"")
     public PracticeFormRegistPage setCity(String value) {
         citySelect.click();
         stateCityContainer.$(byText(value)).click();
         return this;
     }
-
+    @Step("Выбрать штат \"{value}\" и город \"{value}\"")
     public PracticeFormRegistPage setStateAndCity(String state, String city) {
         setState(state);
         setCity(city);
         return this;
     }
-
+    @Step("Отправить форму")
     public PracticeFormRegistPage submitForm() {
         submitButton.click();
         return this;
