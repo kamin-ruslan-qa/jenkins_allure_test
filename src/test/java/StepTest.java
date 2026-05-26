@@ -6,9 +6,11 @@ import steps.WebSteps;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeEach;
+import tests.TestBase;
+import tests.testdata.TestData;
 
 
-public class StepTest {
+public class StepTest  extends TestBase {
     @Test
     @Feature("Issue в репозитории")
     @Story("Создание Issue")

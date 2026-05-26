@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -24,6 +25,8 @@ public class PracticeFormRegistPage {
     private final SelenideElement stateCityContainer = $("#stateCity-wrapper");
     private final SelenideElement submitButton = $("#submit");
 
+
+    @Step("Open registration page /automation-practice-form")
     public PracticeFormRegistPage openPage() {
         open("/one-page-form/automation-practice-form.html");
 
@@ -38,37 +41,37 @@ public class PracticeFormRegistPage {
             """);
             return this;
     }
-
+@Step("Type first name \"{value}\"")
     public PracticeFormRegistPage typeFirstName(String value) {
         firstNameInput.setValue(value);
 
         return this;
     }
-
+@Step("Type last name \"{value}\"")
     public PracticeFormRegistPage typeLastName(String value) {
         lastNameInput.setValue(value);
 
         return this;
     }
-
+    @Step("Type email \"{value}\"")
     public PracticeFormRegistPage typeEmail(String value) {
         userEmailInput.setValue(value);
 
         return this;
     }
-
+@Step("Выбираем пол")
     public PracticeFormRegistPage setGender(String value) {
         genderContainer.$(byText(value)).click();
 
         return this;
     }
-
+@Step("Type user number")
     public PracticeFormRegistPage typeUserNumber(String value) {
         userNumberInput.setValue(value);
 
         return this;
     }
-
+@Step("Выбираем дату рождения")
     public PracticeFormRegistPage setDateOfBirth(String day, String month, String year) {
         $("#dateOfBirthInput").click();
         calendar.setDate(day, month, year);

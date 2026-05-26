@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,6 +8,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import tests.testdata.CategoreType;
+
+import com.codeborne.selenide.Configuration;
+
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -14,11 +18,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class BookStoreTests {
 
-
     @BeforeEach
     void setUp() {
         // Открываем главную страницу интернет-магазина книг
         open("https://bi-bi.ru/");
+        
     }
 
     @ValueSource(strings = {
