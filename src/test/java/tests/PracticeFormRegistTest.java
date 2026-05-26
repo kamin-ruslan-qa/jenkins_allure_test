@@ -8,6 +8,7 @@ import tests.testdata.TestData;
 import static io.qameta.allure.Allure.step;
 
 @Story("Registration form")
+
 public class PracticeFormRegistTest extends TestBase {
 
 
@@ -21,80 +22,108 @@ public class PracticeFormRegistTest extends TestBase {
     // Полная форма регистрации
     {
         step("Open registration page", () -> {
-                    useQaGuru();
-                    practiceFormRegistPage.openPage();
-                });
-            step("Fill registration form", () -> {
-                practiceFormRegistPage
-                        .closeBanner()
-                        .typeFirstName(testData.firstName)
-                        .typeLastName(testData.lastName)
-                        .typeEmail(testData.userEmail)
-                        .setGender(testData.gender)
-                        .typeUserNumber(testData.userNumber)
-                        .setDateOfBirth(testData.day, testData.month, testData.year)
-                        .typeSubjects(testData.subjects)
-                        .setHobbies(testData.hobbies)
-                        .uploadPicture(testData.upload)
-                        .typecurrentAddress(testData.currentAddress)
-                        .setStateAndCity(testData.state, testData.city)
-                        .submitForm();
-            });
-            step( "Check registration form results", () -> {
-                finalComponent
-                        .chekResult("Student Name", testData.firstName + " " + testData.lastName)
-                        .chekResult("Student Email", testData.userEmail)
-                        .chekResult("Gender", testData.gender)
-                        .chekResult("Mobile", testData.userNumber)
-                        .chekResult("Date of Birth", testData.dateOfBirth)
-                        .chekResult("Subjects", testData.subjects)
-                        .chekResult("Hobbies", testData.hobbies)
-                        .chekResult("Picture", testData.upload)
-                        .chekResult("Address", testData.currentAddress)
-                        .chekResult("State and City", testData.state + " " + testData.city);
-            });
-        }
+            useQaGuru();
+            practiceFormRegistPage.openPage();
+        });
+        step("Fill registration form", () -> {
+            practiceFormRegistPage
+                    .closeBanner()
+                    .typeFirstName(testData.firstName)
+                    .typeLastName(testData.lastName)
+                    .typeEmail(testData.userEmail)
+                    .setGender(testData.gender)
+                    .typeUserNumber(testData.userNumber)
+                    .setDateOfBirth(testData.day, testData.month, testData.year)
+                    .typeSubjects(testData.subjects)
+                    .setHobbies(testData.hobbies)
+                    .uploadPicture(testData.upload)
+                    .typecurrentAddress(testData.currentAddress)
+                    .setStateAndCity(testData.state, testData.city)
+                    .submitForm();
+        });
+        step("Check registration form results", () -> {
+            finalComponent
+                    .chekResult("Student Name", testData.firstName + " " + testData.lastName)
+                    .chekResult("Student Email", testData.userEmail)
+                    .chekResult("Gender", testData.gender)
+                    .chekResult("Mobile", testData.userNumber)
+                    .chekResult("Date of Birth", testData.dateOfBirth)
+                    .chekResult("Subjects", testData.subjects)
+                    .chekResult("Hobbies", testData.hobbies)
+                    .chekResult("Picture", testData.upload)
+                    .chekResult("Address", testData.currentAddress)
+                    .chekResult("State and City", testData.state + " " + testData.city);
+        });
     }
 
 
-//            @Test
-//            void onlyRequiredFieldsTest ()
-//            // регистрация с обязательными полями
-//            {
-//                useQaGuru();
-//                practiceFormRegistPage.openPage()
-//                        .closeBanner()
-//                        .typeFirstName(testData.firstName)
-//                        .typeLastName(testData.lastName)
-//                        .setGender(testData.gender)
-//                        .typeUserNumber(testData.userNumber)
-//                        .submitForm();
-//                finalComponent.chekResult("Student Name", testData.firstName + " " + testData.lastName)
-//                        .chekResult("Gender", testData.gender)
-//                        .chekResult("Mobile", testData.userNumber);
-//            }
-//            @Test
-//            void negativeScriptOnTheNameTest () {
-//                //негативный сценарий 1
-//                useQaGuru();
-//                practiceFormRegistPage.openPage()
-//                        .closeBanner()
-//                        .typeFirstName(testData.firstName)
-//                        .submitForm();
-//                finalComponent.modalShouldNotBeVisible();
-//            }
-//            @Test
-//            void negativeScriptOnTheEmailTest () {
-//                //негативный сценарий 2
-//                useQaGuru();
-//                practiceFormRegistPage.openPage()
-//                        .closeBanner()
-//                        .typeFirstName(testData.firstName)
-//                        .typeLastName(testData.lastName)
-//                        .typeEmail(testData.inCorrectEmail)
-//                        .submitForm();
-//                finalComponent.modalShouldNotBeVisible();
-//            }
+    @Test
+    void onlyRequiredFieldsTest()
+    // регистрация с обязательными полями
+    {
+        step("Регистрация с обязательными полями", () -> {
+            useQaGuru();
+            practiceFormRegistPage.openPage();
+        });
+        step("Fill registration form", () -> {
+
+            practiceFormRegistPage
+                    .closeBanner()
+                    .typeFirstName(testData.firstName)
+                    .typeLastName(testData.lastName)
+                    .setGender(testData.gender)
+                    .typeUserNumber(testData.userNumber)
+                    .submitForm();
+        });
+        step("Chek Result", () -> {
+            finalComponent.
+                    chekResult("Student Name", testData.firstName + " " + testData.lastName)
+                    .chekResult("Gender", testData.gender)
+                    .chekResult("Mobile", testData.userNumber);
+        });
+    }
+
+    @Test
+    void negativeScriptOnTheNameTest() {
+        //негативный сценарий 1
+        step("Негативный сценарий 1", () -> {
+            useQaGuru();
+            practiceFormRegistPage.openPage();
+        });
+        step("Fill form", () -> {
+            practiceFormRegistPage
+                    .closeBanner()
+                    .typeFirstName(testData.firstName)
+                    .submitForm();
+        });
+        step("Verify results", () -> {
+            finalComponent.modalShouldNotBeVisible();
+        });
+    }
+
+    @Test
+    void negativeScriptOnTheEmailTest() {
+        //негативный сценарий 2
+        step("Негативный сценарий 2", () -> {
+            useQaGuru();
+            practiceFormRegistPage.openPage();
+            step("Fill form", () -> {
+                practiceFormRegistPage.closeBanner()
+                        .typeFirstName(testData.firstName)
+                        .typeLastName(testData.lastName)
+                        .typeEmail(testData.inCorrectEmail)
+                        .submitForm();
+            });
+            step("Verify results", () -> {
+                finalComponent.modalShouldNotBeVisible();
+            });
+        });
+    }
+}
+
+
+
+
 //            @Test
 //            void negativeScriptOnTheCheckingEmailTest ()
 //            {
