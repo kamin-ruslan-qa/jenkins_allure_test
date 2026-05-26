@@ -31,7 +31,6 @@ TestData testData = new TestData();
                 .typecurrentAddress(testData.currentAddress)
                 .setStateAndCity(testData.state, testData.city)
                 .submitForm();
-
         finalComponent.chekResult("Student Name", testData.firstName + " " + testData.lastName)
                 .chekResult("Student Email", testData.userEmail)
                 .chekResult("Gender", testData.gender)
@@ -56,11 +55,9 @@ TestData testData = new TestData();
                 .setGender(testData.gender)
                 .typeUserNumber(testData.userNumber)
                 .submitForm();
-
         finalComponent.chekResult("Student Name", testData.firstName + " " + testData.lastName)
                 .chekResult("Gender", testData.gender)
                 .chekResult("Mobile", testData.userNumber);
-
     }
     @Test
     void negativeScriptOnTheNameTest() {
@@ -70,10 +67,8 @@ TestData testData = new TestData();
                 .closeBanner()
                 .typeFirstName(testData.firstName)
                 .submitForm();
-
         finalComponent.modalShouldNotBeVisible();
     }
-
     @Test
     void negativeScriptOnTheEmailTest() {
         //негативный сценарий 2
@@ -84,13 +79,10 @@ TestData testData = new TestData();
                 .typeLastName(testData.lastName)
                 .typeEmail(testData.inCorrectEmail)
                 .submitForm();
-
         finalComponent.modalShouldNotBeVisible();
     }
-
     @Test
     void negativeScriptOnTheCheckingEmailTest()
-
     {
         //негативный сценарий 3
         useQaGuru();
@@ -100,11 +92,8 @@ TestData testData = new TestData();
                 .typeLastName(testData.lastName)
                 .typeEmail(testData.inCorrectEmail)
                 .submitForm();
-
         finalComponent.modalShouldNotBeVisible();
     }
-
-
     @Test
     void negativeScriptOnTheMobile()
     {
