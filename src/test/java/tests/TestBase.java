@@ -28,8 +28,13 @@ public class TestBase
                 "enableVNC", true,
                 "enableVideo", true));
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-//        Configuration.browserVersion = "128.0";
+        Configuration.remote = "https://" +
+                System.getProperty("remoteBrowserUrlLogin") +
+                ":" +
+                System.getProperty("remoteBrowserUrlPassword") +
+                "@" +
+                System.getProperty("remoteBrowserUrl", "selenoid.autotests.cloud/wd/hub");
+
     }
 
     protected static void useQaGuru() {
