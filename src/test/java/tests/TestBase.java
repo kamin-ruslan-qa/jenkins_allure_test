@@ -5,6 +5,10 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import helpers.Attach;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -19,6 +23,11 @@ public class TestBase
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x2080";
 //      Configuration.browserVersion= "144.0";
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true));
+        Configuration.browserCapabilities = capabilities;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 //        Configuration.browserVersion = "128.0";
     }
@@ -29,8 +38,13 @@ public class TestBase
 //      Configuration.pageLoadStrategy = "eager";
 //      Configuration.timeout = 10000; // default 4000
 
+
     @AfterEach
-    void afterEach(){
+    void afterEach() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
         closeWebDriver();
     }
 }
