@@ -30,7 +30,7 @@ public class RandomUtils {
     }
 
     public static String getRandomString(int length) {
-//        String LETTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
         String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         StringBuilder result = new StringBuilder();
         SecureRandom rnd = new SecureRandom();
@@ -42,8 +42,7 @@ public class RandomUtils {
     }
 
     public static String getRandomEmail() {
-//        return getRandomString(8) + "@" + getRandomString(8) + ".com";
-//        return String.format("%s@%s.com");
+
         return format("%s@%s.com", getRandomString(8), getRandomString(8));
     }
 
@@ -60,11 +59,10 @@ public class RandomUtils {
 
     public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
-//        SecureRandom rnd = new SecureRandom();
-//        return rnd.nextInt(max + 1);
+
     }
 
-    // +3 (263) 253 - 66 - 12
+
     public static String getRandomPhone() {
         String phoneTemplate = "+%s (%s) %s - %s - %s";
 

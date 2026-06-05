@@ -6,7 +6,7 @@ public enum CategoreType {
     Автоэлектроника("Автоэлектроника"),
     Инструмент("Инструмент");
 
-public final String header;
+    public final String header;
 
     CategoreType(String header) {
         this.header = header;

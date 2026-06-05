@@ -16,20 +16,24 @@ public class WebSteps {
     public void openMainPage() {
         open("https://github.com");
     }
+
     @Step("Нажимаем на поиск")
     public void clickSearchButton() {
         $x("//button[@data-action='click:qbsearch-input#handleExpand']").click();
     }
+
     @Step("Поиск репозитория")
     public void searchRepository() {
         $x("//input[@id='query-builder-test']").sendKeys(testData.repository);
         $x("//input[@id='query-builder-test']").submit();
     }
+
     @Step("Нажимаем на Issues")
     public void clickIssues() {
         $x("//a[@href='/kamin-ruslan-qa/Java_Automatoin_QA']").click();
         $("#issues-tab").click();
     }
+
     @Step("Проверка наличия Issues")
     public void existIssues() {
         $(withText("NewTest")).should(Condition.exist);

@@ -5,7 +5,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import halpers.Attach;
+import helpers.Attach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -42,8 +42,6 @@ public class TestBase
     protected static void useQaGuru() {
         Configuration.baseUrl = "https://qa-guru.github.io";
     }
-//      Configuration.pageLoadStrategy = "eager";
-//      Configuration.timeout = 10000; // default 4000
 
 
     @AfterEach

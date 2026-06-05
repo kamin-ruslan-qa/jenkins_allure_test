@@ -20,9 +20,7 @@ public class TextBoxPage {
     private final SelenideElement fieldError = $(".field-error");
 
 
-
-
-    public TextBoxPage openPage(){
+    public TextBoxPage openPage() {
         open("/one-page-form/text-box.html");
 
         return this;
@@ -49,14 +47,16 @@ public class TextBoxPage {
         permanentAddressInput.setValue(value);
 
         return this;
-}
-public TextBoxPage submitForm(){
+    }
+
+    public TextBoxPage submitForm() {
         submitButton.click();
 
-    return this;
-}
-public TextBoxPage checkField(String key, String value) {
-    outputResults.$(byId(key)).shouldHave(text(value));
-    return this;
-}
+        return this;
+    }
+
+    public TextBoxPage checkField(String key, String value) {
+        outputResults.$(byId(key)).shouldHave(text(value));
+        return this;
+    }
 }

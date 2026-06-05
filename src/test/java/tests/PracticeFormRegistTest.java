@@ -1,10 +1,12 @@
 package tests;
+
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormRegistPage;
 import pages.components.FinalComponent;
 import tests.testdata.TestData;
+
 import static io.qameta.allure.Allure.step;
 
 @Story("Registration form")
@@ -120,36 +122,3 @@ public class PracticeFormRegistTest extends TestBase {
         });
     }
 }
-
-
-
-
-//            @Test
-//            void negativeScriptOnTheCheckingEmailTest ()
-//            {
-//                //негативный сценарий 3
-//                useQaGuru();
-//                practiceFormRegistPage.openPage()
-//                        .closeBanner()
-//                        .typeFirstName(testData.firstName)
-//                        .typeLastName(testData.lastName)
-//                        .typeEmail(testData.inCorrectEmail)
-//                        .submitForm();
-//                finalComponent.modalShouldNotBeVisible();
-//            }
-//            @Test
-//            void negativeScriptOnTheMobile ()
-//            {
-//                //негативный сценарий 4
-//                useQaGuru();
-//                practiceFormRegistPage.openPage()
-//                        .closeBanner()
-//                        .typeFirstName(testData.firstName)
-//                        .typeLastName(testData.lastName)
-//                        .typeEmail(testData.userEmail)
-//                        .typeUserNumber(testData.incorrectPhoneNumber)
-//                        .submitForm();
-//
-//                finalComponent.modalShouldNotBeVisible();
-//            }
-//
